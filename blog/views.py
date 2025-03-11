@@ -10,3 +10,6 @@ def home(request):
         'items': items
     }
     return render(request, context)
+
+def my_blog(request):
+    return HttpResponse("Welcome to my blog!")
