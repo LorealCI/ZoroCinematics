@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container">
+    {% for item in items %}
+        <h1>{{ item.title }}</h1>
+        <h6>Released on : {{ item.title_upload_date|date:"F d, Y" }}</h6>
+        <!--add image-->
+        <img>
+        <p style="margin: 2%; border:solid;">{{ item.description }}</p>
+        <button ><a href="{% url 'rating' item.id %}">Submit</a></button>
+
+    {% endfor %}
+</div>
+{% endblock content %}
