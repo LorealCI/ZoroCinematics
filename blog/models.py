@@ -3,17 +3,11 @@ from django.contrib.auth.models import User
 
 
 # Create your models here.
-class Movie(models.Model):
-    title = models.CharField(max_length=200)
-    description = models.TextField(max_length=4000)
-    uploaded_on = models.DateTimeField(auto_now_add=True)
-
-
 class Review(models.Model):
-    movie = models.ForeignKey(Movie, on_delete=models.CASCADE)
-    author = models.ForeignKey(
+    user = models.ForeignKey(
         User, on_delete=models.CASCADE, related_name="reviewer")
-    body = models.TextField()
+    comment = models.TextField()
+    movie_id = models.IntegerField()
     ratings = (
         (1, 1),
         (2, 2),

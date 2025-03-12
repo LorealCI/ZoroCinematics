@@ -1,31 +1,24 @@
-from django.shortcuts import render
-from .models import Movie, Review
+from django.shortcuts import render, get_object_or_404
+import requests
+from django.http import HttpResponse
+from .models import Review
 from .forms import ReviewForm
 # Create your views here.
 
-
-def home(request):
-    items = Movie.objects.all()
-    context = {
-        'items': items
-    }
-    return render(request, 'blog/index.html', context)
+TMDB_API_KEY = "03848ea6b6db5941f9ee92f5f04801a2"
 
 
-def rate(request, id):
-    post = Movie.objects.get(id=id)
-    form = ReviewForm(request.POST or None)
-    if form.is_valid():
-        author = request.POST.get('author')
-        stars = request.POST.get('stars')
-        comment = request.POST.get('comment')
-        review = Review(author=author, stars=stars,  comment=comment, movie=post)
-        review.save()
-        return redirect('success')
+def search(request):
+    
+    # getting the query from the search box
+    query = request.GET.get('q')
 
-    form = ReviewForm()
-    context = {
-        "form": form
+    if query:
+        data = requests.get("https://api.themoviedb.org/3/search/movie?api_key=(TMBD_API_KEY)&include_adult=false&language=en-US&page=1&query=(query)")
 
-    }
-    return render(request, context)
+    else:
+        return HttpResponse("Please enter a search query")
+
+    return render(request, 'results.html', {
+        data: data
+    })

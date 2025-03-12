@@ -1,17 +1,21 @@
 {% extends "base.html" %}
 
-{% block content %}
+{% block title %}
+Home
+{% endblock %}
 
-<div class="container">
-    {% for item in items %}
-        <h1>{{ item.title }}</h1>
-        <h6>Released on : {{ item.title_upload_date|date:"F d, Y" }}</h6>
-        <!--add image-->
-        <img>
-        <p style="margin: 2%; border:solid;">{{ item.description }}</p>
-        <button ><a href="{% url 'rating' item.id %}">Submit</a></button>
+{% endblock %}
 
-    {% endfor %}
-</div>
+{% block main %}
+<form action="/search/" method="get">
+   <div>
+        <input type="text" class="form-control" placeholder="Search Query" name="q">
+    </div>
+
+    <div>
+        <button type="submit" class="btn btn-primary">Search</button>
+    </div>
+</form>
+
 {% endblock %}
 {% block copyright %}Copyright 2025 Loreal Francis{% endblock %}
