@@ -1,8 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 import requests
 from django.http import HttpResponse
-from .models import Review
-from .forms import ReviewForm
 # Create your views here.
 
 TMDB_API_KEY = "03848ea6b6db5941f9ee92f5f04801a2"
@@ -19,6 +17,10 @@ def search(request):
     else:
         return HttpResponse("Please enter a search query")
 
-    return render(request, 'results.html', {
+    return render(request, 'blog/results.html', {
         data: data
     })
+
+
+def index(request):
+    return render(request, 'blog/index.html')
