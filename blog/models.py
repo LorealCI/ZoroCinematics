@@ -15,11 +15,11 @@ class Review(models.Model):
         User, on_delete=models.CASCADE, related_name="reviewer")
     body = models.TextField()
     ratings = (
-        (1,1),
-        (2,2),
-        (3,3),
-        (4,4),
-        (5,5)
+        (1, 1),
+        (2, 2),
+        (3, 3),
+        (4, 4),
+        (5, 5)
     )
     stars = models.IntegerField(choices=ratings)
     created_on = models.DateTimeField(auto_now_add=True)
