@@ -23,8 +23,11 @@ class Review(models.Model):
     )
     stars = models.IntegerField(choices=ratings)
     created_on = models.DateTimeField(auto_now_add=True)
-    updated_on = models.DateTimeField(auto_now_add=True)
+    updated_on = models.DateTimeField(auto_now=True)
     approved = models.BooleanField(default=False)
+
+    class Meta:
+        ordering = ["-created_on"]
 
     def __str__(self):
         return self.movie.title
