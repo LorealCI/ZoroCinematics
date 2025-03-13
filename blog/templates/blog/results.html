@@ -5,7 +5,23 @@ Results
 {% endblock %}
 
 {% block main %}
-{{ data }}
-
+<div class="container">
+  <div class="row">
+    {% for m in data.results %}
+      <div class="col-md-3 mb-4">
+        <div class="card h-100">
+          <img src="..." class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">{{ m.title }}</h5>
+            <p class="card-text">{{ m.overview }}</p>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</div>
 {% endblock %}
-{% block copyright %}Copyright 2025 Loreal Francis{% endblock %}
+
+{% block copyright %}
+Copyright 2025 Loreal Francis
+{% endblock %}
