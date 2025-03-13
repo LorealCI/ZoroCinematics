@@ -1,9 +1,8 @@
 from django.shortcuts import render, get_object_or_404
+from django.conf import settings
 import requests
 from django.http import HttpResponse
 # Create your views here.
-
-TMDB_API_KEY = "03848ea6b6db5941f9ee92f5f04801a2"
 
 
 def search(request):
