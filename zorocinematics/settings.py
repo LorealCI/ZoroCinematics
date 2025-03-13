@@ -32,6 +32,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['.herokuapp.com', '127.0.0.1',]
 
+TMDB_API_KEY = os.environ.get("TMDB_API_KEY")
+
 
 # Application definition
 

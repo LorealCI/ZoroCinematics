@@ -9,15 +9,17 @@ def search(request):
     
     # getting the query from the search box
     query = request.GET.get('q')
+    print(query)
 
     if query:
-        data = requests.get("https://api.themoviedb.org/3/search/movie?api_key=(TMBD_API_KEY)&include_adult=false&language=en-US&page=1&query=(query)")
+        data = requests.get(f"https://api.themoviedb.org/3/search/movie?api_key={settings.TMDB_API_KEY}&include_adult=false&language=en-US&page=1&query={query}")
+        print(data.json())
 
     else:
         return HttpResponse("Please enter a search query")
 
     return render(request, 'blog/results.html', {
-        data: data
+        "data": data.json()
     })
 
 
