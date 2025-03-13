@@ -26,3 +26,13 @@ def search(request):
 
 def index(request):
     return render(request, 'blog/index.html')
+
+
+def view_movie(request, movie_id):
+    data = requests.get(f"https://api.themoviedb.org/3/movie/{movie_id}?api_key={settings.TMDB_API_KEY}&include_adult=false&language=en-US")
+    recommendations = requests.get(f"https://api.themoviedb.org/3/movie/{movie_id}/recommendations?api_key={settings.TMDB_API_KEY}&include_adult=false&language=en-US")
+    return render(request, "blog/movies.html", {
+        "data": data.json(),
+        "recommendations": recommendations.json(),
+        "type": "movie",
+    })

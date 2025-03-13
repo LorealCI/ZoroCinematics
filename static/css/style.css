@@ -1,17 +1,43 @@
+/* Nav */
 .nav-pad {
     padding-top: 20px;
 }
 
-.light-bg {
-    background-color: antiquewhite;
+.nf-bg {
+    background-color: #000;
+    color: #fff;
 }
 
+.navbar-brand {
+    color: #fff;
+}
+
+.navbar-nav .nav-link {
+    color: #fff;
+}
+/* Main */
 body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    background-color: black;
 }
 
+.card {
+    border: none;
+}
+
+.card-body {
+    background-color: black;
+    color: #fff;
+    border: none;
+}
+
+.text-white {
+    color: #fff;
+}
+
+/* Footer */
 footer {
     margin-top: auto;
 }
