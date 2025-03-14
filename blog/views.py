@@ -1,4 +1,5 @@
 from django.shortcuts import render, get_object_or_404
+from django.http.response import JsonResponse
 from django.conf import settings
 import requests
 from django.http import HttpResponse
@@ -36,3 +37,11 @@ def view_movie(request, movie_id):
         "recommendations": recommendations.json(),
         "type": "movie",
     })
+
+
+def trending(request):
+    type = request.GET.get("media_type")
+    time_window = request.GET.get("time_window")
+
+    trendings = requests.get(f"https://api.themoviedb.org/3/trending/{type}/{time_window}?api_key={settings.TMDB_API_KEY}&include_adult=false&language=en-US")
+    return JsonResponse(trendings.json())
