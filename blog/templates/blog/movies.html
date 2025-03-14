@@ -18,30 +18,56 @@ Results
   <li>{{ g.name }}</li>
   {% endfor %}
 </ul>
-<hr />
+<hr>
 <h2 class="text-white">General Information:</h2>
 <p class="text-white">
   <strong>Release date:</strong> {{ data.release_date }} <br />
   <strong>Runtime: </strong> {{ data.runtime }} minutes <br />
 </p>
-<hr />
+<hr>
+
+<h2 class="text-white">Reviews</h2>
+    <div class="mb-4">
+        {% for review in reviews %}
+            <div class="card mb-3">
+                <div class="card-body">
+                    <h5 class="card-title">{{ review.name }}</h5>
+                    <p class="card-text">{{ review.text }}</p>
+                    <p class="card-text"><small class="text-muted">Posted on {{ review.created_at|date:"d/m/Y H:i" }}</small></p>
+                </div>
+            </div>
+        {% empty %}
+            <p class="text-white">No reviews yet. Be the first to leave a review!</p>
+        {% endfor %}
+    </div>
+
+<h2 class="text-white">Leave a Review</h2>
+{% if user.is_authenticated %}
+    <form method="POST" class="mb-4">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+{% else %}
+    <p class="text-white">You must <a href="{% url 'account_login' %}?next={{ request.path }}">log in</a> to leave a review.</p>
+{% endif %}
+
+<hr>
 <h2 class="text-white">Recommendations</h2>
 <div class="container">
   <div class="row">
-    {% for m in recommendations.results %}
+    {% for m in recommendations.results|slice:":4" %}
     <div class="col-md-3 mb-4">
       <div class="card h-100">
         <img
           src="https://image.tmdb.org/t/p/w200{{ m.poster_path }}"
           class="card-img-top"
-          alt="..."
-        />
+          alt="...">
         <div class="card-body">
           <h5 class="card-title text-white">{{ m.title }}</h5>
           <p class="card-text text-white">{{ m.overview }}</p>
           <a href="/{{ type }}/{{ m.id }}/" class="btn btn-primary"
-            >View Details</a
-          >
+            >View Details</a>
         </div>
       </div>
     </div>

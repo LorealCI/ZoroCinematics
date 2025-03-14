@@ -1,7 +1,12 @@
 from django.contrib import admin
-from .models import Comment
-from django_summernote.admin import SummernoteModelAdmin
-
+from .models import Review
 
 # Register your models here.
-admin.site.register(Comment)
+
+
+@admin.register(Review)
+class ReviewAdmin(admin.ModelAdmin):
+    list_display = ('name', 'movie_id', 'created_at')
+    list_filter = ('created_at',)
+    search_fields = ('name', 'text')
+
