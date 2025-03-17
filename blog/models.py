@@ -12,4 +12,4 @@ class Review(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        return f"Review by {self.name} on Movie {self.movie_id}"
+        return f"Review by {self.name.username} on Movie {self.movie_id}"

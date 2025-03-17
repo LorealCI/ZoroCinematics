@@ -43,7 +43,7 @@ def view_movie(request, movie_id):
         if form.is_valid():
             review = form.save(commit=False)
             review.movie_id = movie_id
-            review.user = request.user  # Associates the review with the logged-in user
+            review.name = request.user  # Associates the review with the logged-in user
             review.save()
             return redirect('view_movie', movie_id=movie_id)  # This redirects to the same page after submit
     else:
@@ -59,3 +59,9 @@ def view_movie(request, movie_id):
         "reviews": review,
         "type": "movie",
     })
+
+
+def view_trending(request):
+    url = f"https://api.themoviedb.org/3/trending/movie/week?api_key={settings.TMDB_API_KEY}&include_adult=false&language=en-US"
+    response = requests.get(url)
+    return JsonResponse(response.json())

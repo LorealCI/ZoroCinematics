@@ -1,5 +1,7 @@
 {% extends "base.html" %}
 
+{% load static %}
+
 {% block title %}
 Home
 {% endblock %}
@@ -14,6 +16,10 @@ Home
         <button type="submit" class="btn btn-primary">Search</button>
     </div>
 </form>
+
+    <h2 class="text-white text-center">Now Trending</h2>
+    <div id="trending"></div>
+    <script src="{% static 'js/script.js' %}"></script>
 
 {% endblock %}
 {% block copyright %}Copyright 2025 Loreal Francis-Boyles{% endblock %}
