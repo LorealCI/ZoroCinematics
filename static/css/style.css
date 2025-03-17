@@ -23,6 +23,10 @@ body {
     background-color: black;
 }
 
+.white {
+    background-color: #fff;
+}
+
 .card {
     border: none;
 }
@@ -35,6 +39,70 @@ body {
 
 .text-white {
     color: #fff;
+}
+
+.text-black {
+    color: #000;
+}
+
+.movie-img {
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+    width: 15%;
+    height: auto;
+    padding-top: 20px;
+
+}
+
+.mid {
+    text-align: center;
+    padding-top: 20px;
+}
+
+.info {
+    background-color: #fff;
+}
+
+@keyframes borderColorChange {
+    0% {
+        border-color: rgb(165, 39, 39);
+    }
+    25% {
+        border-color: rgb(0, 174, 255);
+    }
+    50% {
+        border-color: rgb(33, 223, 33);
+    }
+    75% {
+        border-color: yellow;
+    }
+    100% {
+        border-color: rgb(214, 78, 101);
+    }
+}
+
+.review-box {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #1a1a1a;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border: solid 6px;
+    animation: borderColorChange 5s ease infinite;
+}
+
+.review-box form {
+    width: 100%;
+}
+
+.review-box textarea {
+    resize: none;
+}
+
+.pad-btm {
+    padding-bottom: 20px;
 }
 
 /* Footer */

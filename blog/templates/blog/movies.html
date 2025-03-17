@@ -1,30 +1,41 @@
 {% extends "base.html" %} 
+{% load static %}
 
 {% block title %} 
 Results 
 {% endblock %} 
 
 {% block main %}
-<h1 class="text-white">{{ data.title }}</h1>
-<h4 class="text-white"><i>~{{ data.tagline }}</i></h4>
-<img src="https://image.tmdb.org/t/p/w200{{ data.poster_path }}" alt="..." />
-<hr />
-<h2 class="text-white">Overview</h2>
-<p class="text-white">{{ data.overview }}</p>
-<hr />
-<h2 class="text-white">Genres</h2>
-<ul class="text-white">
-  {% for g in data.genres %}
-  <li>{{ g.name }}</li>
-  {% endfor %}
-</ul>
+<section class="white">
+<img class="movie-img" src="https://image.tmdb.org/t/p/w200{{ data.poster_path }}" alt="movie cover image">
+<h1 class="text-black mid">{{ data.title }}</h1>
+<h4 class="text-black mid"><i>~ {{ data.tagline }} ~</i></h4>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <h2 class="text-black">Genres</h2>
+      <ul class="text-black">
+        {% for g in data.genres %}
+        <li>{{ g.name }}</li>
+        {% endfor %}
+      </ul>
+    </div>
+
+    <div class="col-md-6">
+      <h2 class="text-black">General Information:</h2>
+      <p class="text-black">
+        <strong>Release date:</strong> {{ data.release_date }} <br />
+        <strong>Runtime: </strong> {{ data.runtime }} minutes <br />
+      </p>
+    </div>
+  </div>
+</div>
+
+<h2 class="text-black">Overview</h2>
+<p class="text-black">{{ data.overview }}</p>
 <hr>
-<h2 class="text-white">General Information:</h2>
-<p class="text-white">
-  <strong>Release date:</strong> {{ data.release_date }} <br />
-  <strong>Runtime: </strong> {{ data.runtime }} minutes <br />
-</p>
-<hr>
+</section>
 
 <h2 class="text-white">Reviews</h2>
     <div class="mb-4">
@@ -92,19 +103,21 @@ Results
         {% endfor %}
     </div>
 
-<h2 class="text-white">Leave a Review</h2>
-{% if user.is_authenticated %}
-    <form method="POST" class="mb-4">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit" class="btn btn-primary">Submit</button>
-    </form>
+    <h2 class="text-white mid pad-btm">Leave a Review</h2>
+    {% if user.is_authenticated %}
+        <div class="review-box">
+            <form method="POST" class="mb-4">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
 {% else %}
     <p class="text-white">You must <a href="{% url 'account_login' %}?next={{ request.path }}">log in</a> to leave a review.</p>
 {% endif %}
 
 <hr>
-<h2 class="text-white">Recommendations</h2>
+<h2 class="text-white mid pad-btm">Recommendations</h2>
 <div class="container">
   <div class="row">
     {% for m in recommendations.results|slice:":4" %}
