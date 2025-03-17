@@ -1,7 +1,9 @@
 from django.shortcuts import render, get_object_or_404
 from django.shortcuts import redirect
 from django.http.response import JsonResponse
-from django.contrib.auth.decorators import login_required
+from django.http import HttpResponseForbidden
+from django.http import HttpResponseRedirect
+# from django.contrib.auth.decorators import login_required
 from .models import Review
 from .forms import ReviewForm
 from django.conf import settings
@@ -59,6 +61,33 @@ def view_movie(request, movie_id):
         "reviews": review,
         "type": "movie",
     })
+
+
+def update_review(request, review_id):
+    review = get_object_or_404(Review, id=review_id)
+
+    # Ensure that only the owner of the review can update it
+    if review.name != request.user:
+        return HttpResponseForbidden("You are not allowed to edit this review.")
+
+    if request.method == 'POST':
+        form = ReviewForm(request.POST, instance=review)
+        if form.is_valid():
+            form.save()
+            return redirect('view_movie', movie_id=review.movie_id)
+
+
+def delete_review(request, review_id):
+    review = get_object_or_404(Review, id=review_id)
+
+    # Ensure that only the owner of the review can delete it
+    if review.name != request.user:
+        return HttpResponseForbidden("You are not allowed to delete this review.")
+
+    if request.method == 'POST':
+        movie_id = review.movie_id
+        review.delete()
+        return redirect('view_movie', movie_id=movie_id)
 
 
 def view_trending(request):
