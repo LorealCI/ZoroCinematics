@@ -25,13 +25,16 @@ Home
     </p>
     <form action="/search/" method="get" class="search-bar">
         <div class="col-auto">
-             <input type="text" class="form-control" placeholder="Search A Movie" name="q">
-         </div>
-     
-         <div class="col-auto home-btn">
-             <button type="submit" class="btn btn-primary">Search</button>
-         </div>
-     </form>
+            <input type="text" class="form-control" id="search-input" placeholder="Search A Movie" name="q" list="suggestions">
+            <datalist id="suggestions">
+                <!-- Suggestions will be dynamically added here -->
+            </datalist>
+        </div>
+    
+        <div class="col-auto home-btn">
+            <button type="submit" class="btn btn-primary">Search</button>
+        </div>
+    </form>
 </div>
 
 

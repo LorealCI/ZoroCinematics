@@ -97,3 +97,15 @@ def view_trending(request):
         return JsonResponse(response.json())
     else:
         return JsonResponse({"error": "Failed to fetch trending movies"}, status=response.status_code)
+
+
+def autocomplete_search(request):
+    query = request.GET.get('q', '')  # Get the query from the request
+    if query:
+        url = f"https://api.themoviedb.org/3/search/movie?api_key={settings.TMDB_API_KEY}&query={query}&include_adult=false&language=en-US&page=1"
+        response = requests.get(url)
+        if response.status_code == 200:
+            results = response.json().get('results', [])
+            suggestions = [{'id': movie['id'], 'title': movie['title']} for movie in results[:10]]  # Limit to 10 suggestions
+            return JsonResponse(suggestions, safe=False)
+    return JsonResponse([], safe=False)

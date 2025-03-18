@@ -4,6 +4,7 @@ from django.urls import path, include
 urlpatterns = [
     path("", views.index, name="index"),
     path("accounts/", include("allauth.urls")),
+    path('autocomplete/', views.autocomplete_search, name='autocomplete_search'),
     path("search/", views.search, name="search"),
     path("movie/<int:movie_id>/", views.view_movie, name="view_movie"),
     path("review/update/<int:review_id>/", views.update_review, name="update_review"),
