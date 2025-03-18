@@ -24,17 +24,47 @@ body {
 }
 
 .white {
-    background-color: #fff;
+    background: linear-gradient(135deg, #f8b195, #f67280, #c06c84, #6c5b7b, #355c7d);
+    background-size: 400% 400%; /* Ensure smooth transitions */
+    animation: gradientShift 10s ease infinite; /* Add animation for a shifting gradient */
+}
+
+@keyframes gradientShift {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
 }
 
 .card {
     border: none;
+    height: 100%;
 }
 
 .card-body {
     background-color: black;
     color: #fff;
     border: none;
+}
+
+.overview {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    height: 4.5em;
+}
+
+.m-btn {
+    display: block;
+    margin: 0 auto;
 }
 
 .text-white {

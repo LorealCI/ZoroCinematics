@@ -9,7 +9,11 @@ Results
 <section class="white">
 <img class="movie-img" src="https://image.tmdb.org/t/p/w200{{ data.poster_path }}" alt="movie cover image">
 <h1 class="text-black mid">{{ data.title }}</h1>
+{% if data.tagline %}
 <h4 class="text-black mid"><i>~ {{ data.tagline }} ~</i></h4>
+{% else %}
+<h4 class="text-black mid">&nbsp;</h4> <!-- This is empty space to make site consistent -->
+{% endif %}
 
 <div class="container">
   <div class="row">
@@ -119,7 +123,7 @@ Results
 <hr>
 <h2 class="text-white mid pad-btm">Recommendations</h2>
 <div class="container">
-  <div class="row">
+  <div class="row text-white">
     {% for m in recommendations.results|slice:":4" %}
     <div class="col-md-3 mb-4">
       <div class="card h-100">
@@ -127,12 +131,13 @@ Results
           src="https://image.tmdb.org/t/p/w200{{ m.poster_path }}"
           class="card-img-top"
           alt="...">
-        <div class="card-body">
-          <h5 class="card-title text-white">{{ m.title }}</h5>
-          <p class="card-text text-white">{{ m.overview }}</p>
-          <a href="/{{ type }}/{{ m.id }}/" class="btn btn-primary"
-            >View Details</a>
-        </div>
+          <div class="card-body d-flex flex-column">
+            <h5 class="card-title">{{ m.title }}</h5>
+            <p class="card-text overview">{{ m.overview }}</p>
+            <div class="mt-auto">
+              <a href="/{{ type }}/{{ m.id }}/" class="btn btn-primary m-btn">View Details</a>
+            </div>
+          </div>
       </div>
     </div>
     {% endfor %}

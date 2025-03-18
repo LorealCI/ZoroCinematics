@@ -11,10 +11,12 @@ Results
       <div class="col-md-3 mb-4">
         <div class="card h-100">
           <img src="https://image.tmdb.org/t/p/w200{{ m.poster_path }}" class="card-img-top" alt="movie cover images">
-          <div class="card-body">
+          <div class="card-body d-flex flex-column">
             <h5 class="card-title">{{ m.title }}</h5>
-            <p class="card-text">{{ m.overview }}</p>
-            <a href="{% url 'view_movie' movie_id=m.id %}" class="btn btn-primary">Review Movie</a>
+            <p class="card-text overview">{{ m.overview }}</p>
+            <div class="mt-auto">
+              <a href="{% url 'view_movie' movie_id=m.id %}" class="btn btn-primary m-btn">Review Movie</a>
+            </div>
           </div>
         </div>
       </div>
