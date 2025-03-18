@@ -1,4 +1,31 @@
 document.addEventListener("DOMContentLoaded", function () {
+    const wrapper = document.querySelector(".wrapper");
+
+    // Fetch trending movies
+    fetch("/trending/")
+        .then(response => {
+            if (!response.ok) {
+                throw new Error("Failed to fetch trending movies");
+            }
+            return response.json();
+        })
+        .then(data => {
+            // Populate the carousel with movie posters
+            data.results.slice(0, 8).forEach((movie, index) => {
+                const item = document.createElement("div");
+                item.className = `item item${index + 1}`;
+                item.style.backgroundImage = `url('https://image.tmdb.org/t/p/w200${movie.poster_path}')`;
+                item.style.backgroundSize = "cover";
+                item.style.backgroundPosition = "center";
+                wrapper.appendChild(item);
+            });
+        })
+        .catch(error => {
+            console.error("Error fetching trending movies:", error);
+        });
+});
+
+/* document.addEventListener("DOMContentLoaded", function () {
     fetch("/trending/")
         .then(response => response.json())
         .then(data => {
@@ -24,4 +51,4 @@ document.addEventListener("DOMContentLoaded", function () {
         .catch(error => {
             console.error("Error fetching trending movies:", error);
         });
-});
+}); */

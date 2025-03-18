@@ -7,18 +7,36 @@ Home
 {% endblock %}
 
 {% block main %}
-<form action="/search/" method="get">
-   <div class="col-auto">
-        <input type="text" class="form-control" placeholder="Search A Movie" name="q">
-    </div>
+<div class="wrapper" id="trending-wrapper">
+    <div class="item item1"></div>
+    <div class="item item2"></div>
+    <div class="item item3"></div>
+    <div class="item item4"></div>
+    <div class="item item5"></div>
+    <div class="item item6"></div>
+    <div class="item item7"></div>
+    <div class="item item8"></div>
+  </div>
 
-    <div class="col-auto">
-        <button type="submit" class="btn btn-primary">Search</button>
-    </div>
-</form>
+<div class="white-box">
+    <h2 class="text-black text-center">Welcome to ZoroCinematics</h2>
+    <p class="text-black text-center">
+        Explore the latest trending movies and find your next favorite film!
+    </p>
+    <form action="/search/" method="get" class="search-bar">
+        <div class="col-auto">
+             <input type="text" class="form-control" placeholder="Search A Movie" name="q">
+         </div>
+     
+         <div class="col-auto home-btn">
+             <button type="submit" class="btn btn-primary">Search</button>
+         </div>
+     </form>
+</div>
 
-    <h2 class="text-white text-center">Now Trending</h2>
-    <div id="trending"></div>
+
+     <!-- <h2 class="text-white text-center">Now Trending</h2>
+     <div id="trending"></div> -->
     <script src="{% static 'js/script.js' %}"></script>
 
 {% endblock %}

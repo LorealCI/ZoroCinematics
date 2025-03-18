@@ -93,4 +93,7 @@ def delete_review(request, review_id):
 def view_trending(request):
     url = f"https://api.themoviedb.org/3/trending/movie/week?api_key={settings.TMDB_API_KEY}&include_adult=false&language=en-US"
     response = requests.get(url)
-    return JsonResponse(response.json())
+    if response.status_code == 200:
+        return JsonResponse(response.json())
+    else:
+        return JsonResponse({"error": "Failed to fetch trending movies"}, status=response.status_code)
