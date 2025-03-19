@@ -8,7 +8,6 @@ class Review(models.Model):
     movie_id = models.IntegerField()
     name = models.ForeignKey('auth.User', on_delete=models.CASCADE)
     text = models.TextField()
-    rating = models.IntegerField(choices=[(i, i) for i in range(1, 6)], default=5)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 

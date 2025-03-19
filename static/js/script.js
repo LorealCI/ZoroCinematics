@@ -53,38 +53,3 @@ document.addEventListener("DOMContentLoaded", function () {
         });
 }); */
 
-/*document.addEventListener("DOMContentLoaded", function () {
-    const searchInput = document.getElementById("search-input");
-    const suggestionsList = document.getElementById("suggestions");
-
-    searchInput.addEventListener("input", function () {
-        const query = searchInput.value;
-
-        if (query.length > 2) { // Fetch suggestions only if the input length is greater than 2
-            fetch(`/autocomplete/?q=${query}`)
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error("Failed to fetch suggestions");
-                    }
-                    return response.json();
-                })
-                .then(data => {
-                    // Clear existing suggestions
-                    suggestionsList.innerHTML = "";
-
-                    // Populate the datalist with new suggestions
-                    data.forEach(movie => {
-                        const option = document.createElement("option");
-                        option.value = movie.title; // Set the movie title as the value
-                        suggestionsList.appendChild(option);
-                    });
-                })
-                .catch(error => {
-                    console.error("Error fetching autocomplete suggestions:", error);
-                });
-        } else {
-            // Clear suggestions if the input is too short
-            suggestionsList.innerHTML = "";
-        }
-    });
-});*/
