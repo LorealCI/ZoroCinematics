@@ -53,7 +53,7 @@ document.addEventListener("DOMContentLoaded", function () {
         });
 }); */
 
-document.addEventListener("DOMContentLoaded", function () {
+/*document.addEventListener("DOMContentLoaded", function () {
     const searchInput = document.getElementById("search-input");
     const suggestionsList = document.getElementById("suggestions");
 
@@ -87,4 +87,4 @@ document.addEventListener("DOMContentLoaded", function () {
             suggestionsList.innerHTML = "";
         }
     });
-});
+});*/

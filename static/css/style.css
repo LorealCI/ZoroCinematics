@@ -135,6 +135,21 @@
     padding-top: 30px;
 }
 
+#search-input {
+    width: 100%;
+    padding: 10px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+}
+
+/*#suggestions {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    max-height: 100px;
+    overflow-y: auto;
+}*/
+
 .home-btn {
     padding-top: 10px;
 }
@@ -164,7 +179,7 @@ body {
         background-position: 0% 50%;
     }
 }
-
+/* Movies */
 .card {
     border: none;
     height: 100%;
@@ -218,6 +233,7 @@ body {
     background-color: #fff;
 }
 
+/*Review Styles*/
 .review-box {
     max-width: 600px;
     margin: 0 auto;
@@ -257,6 +273,14 @@ body {
 
 .pad-btm {
     padding-bottom: 20px;
+}
+/* Rating Styles */
+.text-warning {
+    color: #ffc107; /* Gold color for filled stars */
+}
+
+.text-secondary {
+    color: #d3d3d3; /* Light gray color for empty stars */
 }
 
 /* Footer */

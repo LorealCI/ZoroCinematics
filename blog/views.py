@@ -3,7 +3,7 @@ from django.shortcuts import redirect
 from django.http.response import JsonResponse
 from django.http import HttpResponseForbidden
 from django.http import HttpResponseRedirect
-# from django.contrib.auth.decorators import login_required
+from django.db.models import Avg
 from .models import Review
 from .forms import ReviewForm
 from django.conf import settings
@@ -38,7 +38,7 @@ def index(request):
 def view_movie(request, movie_id):
     data = requests.get(f"https://api.themoviedb.org/3/movie/{movie_id}?api_key={settings.TMDB_API_KEY}&include_adult=false&language=en-US")
     recommendations = requests.get(f"https://api.themoviedb.org/3/movie/{movie_id}/recommendations?api_key={settings.TMDB_API_KEY}&include_adult=false&language=en-US")
-    
+   
     # Handle comment form submission
     if request.method == 'POST':
         form = ReviewForm(request.POST)
@@ -54,13 +54,43 @@ def view_movie(request, movie_id):
     # Fetch all comments for the current movie
     review = Review.objects.filter(movie_id=movie_id).order_by('-created_at')
 
+    # Calculate remaining stars for each review
+    # for review in review:
+    #    review.remaining_stars = 5 - review.rating
+
+    # Calculate average rating
+    average_rating = review.aggregate(Avg('rating'))['rating__avg']
+
     return render(request, "blog/movies.html", {
         "data": data.json(),
         "recommendations": recommendations.json(),
         "form": form,
         "reviews": review,
+        "average_rating": round(average_rating, 1) if average_rating else None,
         "type": "movie",
     })
+
+
+# def fetch_movie_data(movie_id):
+#   url = f"https://api.themoviedb.org/3/movie/{movie_id}?api_key={settings.TMDB_API_KEY}&include_adult=false&language=en-US"
+#  response = requests.get(url)
+#    if response.status_code == 200:
+#        return response.json()
+#    else:
+#        return {"error": "Failed to fetch movie data"}
+
+
+# def view_movie_data(request, movie_id):
+#    movie_data = fetch_movie_data(movie_id)
+#    reviews = Review.objects.filter(movie_id=movie_id)
+#    average_rating = reviews.aggregate(Avg('rating'))['rating__avg']
+
+#    context = {
+#        'data': movie_data,
+#        'reviews': reviews,
+#        'average_rating': round(average_rating, 1) if average_rating else None,  # Rounds it to 1 decimal place
+#    }
+#    return render(request, 'blog/movies.html', context)
 
 
 def update_review(request, review_id):
@@ -99,13 +129,13 @@ def view_trending(request):
         return JsonResponse({"error": "Failed to fetch trending movies"}, status=response.status_code)
 
 
-def autocomplete_search(request):
-    query = request.GET.get('q', '')  # Get the query from the request
-    if query:
-        url = f"https://api.themoviedb.org/3/search/movie?api_key={settings.TMDB_API_KEY}&query={query}&include_adult=false&language=en-US&page=1"
-        response = requests.get(url)
-        if response.status_code == 200:
-            results = response.json().get('results', [])
-            suggestions = [{'id': movie['id'], 'title': movie['title']} for movie in results[:10]]  # Limit to 10 suggestions
-            return JsonResponse(suggestions, safe=False)
-    return JsonResponse([], safe=False)
+# def autocomplete_search(request):
+    # query = request.GET.get('q', '')  # Get the query from the request
+    # if query:
+    # url = f"https://api.themoviedb.org/3/search/movie?api_key={settings.TMDB_API_KEY}&query={query}&include_adult=false&language=en-US&page=1"
+    # response = requests.get(url)
+    # if response.status_code == 200:
+        #    results = response.json().get('results', [])
+        #    suggestions = [{'id': movie['id'], 'title': movie['title']} for movie in results[:10]]  # Limit to 10 suggestions
+        #    return JsonResponse(suggestions, safe=False)
+# return JsonResponse([], safe=False)
