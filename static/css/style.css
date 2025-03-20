@@ -93,6 +93,11 @@
   animation-delay: calc(30s / 8 * (8 - 8) * -1);
 }
 
+#trending-wrapper .item {
+    padding:20
+
+}
+
 
 /* Home page */
 .white-box {
@@ -175,7 +180,7 @@ body {
     height: 100%;
 }
 
-.card-img-top {
+.cards-img {
     width: 310px;
     height: 460px;
     object-fit: cover; /* Ensure the image fills the area while maintaining aspect ratio */

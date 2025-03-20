@@ -11,7 +11,7 @@ Results
     {% for m in data.results %}
       <div class="col-md-3 mb-4">
         <div class="card h-100">
-          <img src="{% if m.poster_path %}https://image.tmdb.org/t/p/w200{{ m.poster_path }}{% else %}{% static 'images/default-movie.webp' %}{% endif %}" class="card-img-top" alt="movie cover images">
+          <img src="{% if m.poster_path %}https://image.tmdb.org/t/p/w200{{ m.poster_path }}{% else %}{% static 'images/default-movie.webp' %}{% endif %}" class="cards-img" alt="movie cover images">
           <div class="card-body d-flex flex-column">
             <h5 class="card-title">{{ m.title }}</h5>
             <p class="card-text overview">{{ m.overview }}</p>
