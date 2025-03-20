@@ -3,6 +3,7 @@ from django.shortcuts import redirect
 from django.http.response import JsonResponse
 from django.http import HttpResponseForbidden
 from django.http import HttpResponseRedirect
+from django.db.models import Avg
 from .models import Review
 from .forms import ReviewForm
 from django.conf import settings
@@ -57,11 +58,27 @@ def view_movie(request, movie_id):
         r.rating_range = range(r.rating)
         r.remaining_range = range(5 - r.rating)
 
+    total_ratings = sum(r.rating for r in review)
+    num_reviews = review.count()
+    average_rating = total_ratings / num_reviews if num_reviews > 0 else 0
+
+    # Calculate the number of full, half, and empty stars
+    full_stars = int(average_rating)  # Full stars (integer part of the rating)
+    half_star = 1 if average_rating % 1 >= 0.5 else 0  # Half star if there's a decimal part >= 0.5
+    empty_stars = 5 - full_stars - half_star
+
+    star_representation = (
+        "&#9733;" * full_stars +  # Full stars
+        ("&#9733;" if half_star else "") +  # Half star if applicable
+        "&#9734;" * empty_stars) # Empty stars
+
     return render(request, "blog/movies.html", {
         "data": data.json(),
         "recommendations": recommendations.json(),
         "form": form,
         "reviews": review,
+        'average_rating': average_rating,
+        'star_representation': star_representation,
         "type": "movie",
     })
 

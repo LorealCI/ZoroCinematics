@@ -17,7 +17,7 @@ Results
 
 <div class="container">
   <div class="row">
-    <div class="col-md-6">
+    <div class="col-md-4">
       <h2 class="text-black">Genres</h2>
       <ul class="text-black">
         {% for g in data.genres %}
@@ -26,13 +26,20 @@ Results
       </ul>
     </div>
 
-    <div class="col-md-6">
+    <div class="col-md-4">
       <h2 class="text-black">General Information:</h2>
       <p class="text-black">
-        <strong>Release date:</strong> {{ data.release_date }} <br />
-        <strong>Runtime: </strong> {{ data.runtime }} minutes <br />
+        <strong>Release date:</strong> {{ data.release_date }} <br>
+        <strong>Runtime: </strong> {{ data.runtime }} minutes <br>
       </p>
     </div>
+    <div class="col-md-4">
+      <h2 class="text-black">Average Rating:</h2>
+      <strong class="text-black">Average Rating: {{ average_rating|floatformat:1 }}</strong>
+      <div>
+        <!-- Display stars as filled/empty stars -->
+        <span class="text-warning">{{ star_representation|safe }}</span>
+      </div>
   </div>
 </div>
 

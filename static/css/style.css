@@ -12,6 +12,13 @@
     color: #fff;
 }
 
+.navbar-brand {
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 /* Movie Carousel */
 *,
 *::before,
@@ -93,11 +100,6 @@
   animation-delay: calc(30s / 8 * (8 - 8) * -1);
 }
 
-#trending-wrapper .item {
-    padding:20
-
-}
-
 
 /* Home page */
 .white-box {
@@ -158,7 +160,7 @@ body {
 }
 
 .white {
-    background: linear-gradient(135deg, #f8b195, #f67280, #c06c84, #6c5b7b, #355c7d);
+    background: linear-gradient(135deg, #f8b195, #f67280, #00aee1d9);
     background-size: 400% 400%; /* Ensure smooth transitions */
     animation: gradientShift 10s ease infinite; /* Add animation for a shifting gradient */
 }
