@@ -280,6 +280,16 @@ body {
     padding-bottom: 20px;
 }
 
+
+ /* Rating Styles */
+ .text-warning {
+    color: #ffc107; /* Gold colour for the star ratings */
+}
+
+.text-secondary {
+    color: #d3d3d3; /* Light gray colour for the empty stars */
+}
+
 /* Footer */
 footer {
     margin-top: auto;

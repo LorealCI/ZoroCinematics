@@ -53,6 +53,10 @@ def view_movie(request, movie_id):
     # Fetch all comments for the current movie
     review = Review.objects.filter(movie_id=movie_id).order_by('-created_at')
 
+    for r in review:
+        r.rating_range = range(r.rating)
+        r.remaining_range = range(5 - r.rating)
+
     return render(request, "blog/movies.html", {
         "data": data.json(),
         "recommendations": recommendations.json(),
@@ -73,8 +77,17 @@ def update_review(request, review_id):
         form = ReviewForm(request.POST, instance=review)
         if form.is_valid():
             form.save()
-            return redirect('view_movie', movie_id=review.movie_id)
+            # Return a JSON response for AJAX requests
+            return JsonResponse({'success': True, 'message': 'Review updated successfully!'})
+        else:
+            # Return form errors for AJAX requests
+            return JsonResponse({'success': False, 'errors': form.errors}, status=400)
 
+    # If the request is not POST, return a 405 Method Not Allowed response
+    return JsonResponse({'error': 'Invalid request method'}, status=405)
+
+           # return redirect('view_movie', movie_id=review.movie_id)
+    
 
 def delete_review(request, review_id):
     review = get_object_or_404(Review, id=review_id)
