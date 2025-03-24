@@ -1,0 +1,349 @@
+/* Nav */
+.nav-pad {
+    padding-top: 10px;
+}
+
+.nf-bg {
+    background-color: #000;
+    color: #fff;
+}
+
+.navbar-nav .nav-link {
+    color: #fff;
+}
+
+.navbar-brand {
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Movie Carousel */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+}
+
+.wrapper {
+  width: 90%;
+  max-width: 1536px;
+  margin-inline: auto;
+  position: relative;
+  height: 200px;
+  margin-top: 5rem;
+  overflow: hidden;
+  mask-image: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0),
+    rgba(0, 0, 0, 1) 20%,
+    rgba(0, 0, 0, 1) 80%,
+    rgba(0, 0, 0, 0)
+  );
+}
+
+@keyframes scrollRight {
+  to {
+    right: -200px;
+  }
+}
+
+.item {
+  width: 200px;
+  height: 200px;
+  border-radius: 6px;
+  position: absolute;
+  right: max(calc(200px * 8), 100%);
+  animation-name: scrollRight;
+  animation-duration: 30s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  background-size: cover;
+  background-position: center;
+  background-color: #000;
+}
+
+.item1 {
+  animation-delay: calc(30s / 8 * (8 - 1) * -1);
+}
+
+.item2 {
+  animation-delay: calc(30s / 8 * (8 - 2) * -1);
+}
+
+.item3 {
+  animation-delay: calc(30s / 8 * (8 - 3) * -1);
+}
+
+.item4 {
+  animation-delay: calc(30s / 8 * (8 - 4) * -1);
+}
+
+.item5 {
+  animation-delay: calc(30s / 8 * (8 - 5) * -1);
+}
+
+.item6 {
+  animation-delay: calc(30s / 8 * (8 - 6) * -1);
+}
+
+.item7 {
+  animation-delay: calc(30s / 8 * (8 - 7) * -1);
+}
+
+.item8 {
+  animation-delay: calc(30s / 8 * (8 - 8) * -1);
+}
+
+
+/* Home page */
+.white-box {
+    background-color: white; /* White background */
+    width: 60%; /* Adjust the width as needed */
+    margin: 2rem auto; /* Center the box horizontally and add vertical spacing */
+    padding: 2rem; /* Add padding inside the box */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add a subtle shadow */
+    text-align: center; /* Center the text inside the box */
+    border: solid 6px;
+    animation: borderColorChange 5s ease infinite;
+}
+
+@keyframes borderColorChange {
+    0% {
+        border-color: rgb(165, 39, 39);
+    }
+    25% {
+        border-color: rgb(0, 174, 255);
+    }
+    50% {
+        border-color: rgb(33, 223, 33);
+    }
+    75% {
+        border-color: yellow;
+    }
+    100% {
+        border-color: rgb(214, 78, 101);
+    }
+}
+
+.search-bar {
+    width: 50%;
+    margin: 0 auto;
+    padding-bottom: 10px;
+    padding-top: 30px;
+}
+
+#search-input {
+    width: 100%;
+    padding: 10px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+}
+
+
+.home-btn {
+    padding-top: 10px;
+}
+
+/* Main */
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: black;
+}
+
+.white {
+   background-color: #8A9A5B;
+}
+
+
+/* Movies */
+.card {
+    border: none;
+    height: 100%;
+}
+
+.cards-img {
+    width: 310px;
+    height: 460px;
+    object-fit: cover; /* Ensure the image fills the area while maintaining aspect ratio */
+    margin: 0 auto; /* Center the image horizontally */
+}
+
+.card-body {
+    background-color: black;
+    color: #fff;
+    border: none;
+}
+
+.card-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    text-align: center; 
+}
+
+
+.overview {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    
+}
+
+.m-btn {
+    display: block;
+    margin: 0 auto;
+}
+
+.text-white {
+    color: #fff;
+}
+
+.text-black {
+    color: #000;
+}
+
+.movie-img {
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+    width: 15%;
+    height: auto;
+    padding-top: 20px;
+
+}
+
+.mid {
+    text-align: center;
+    padding-top: 20px;
+}
+
+.info {
+    background-color: #fff;
+}
+
+/*Review Styles*/
+.review-box {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #1a1a1a;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border: solid 6px;
+    animation: borderColorChange 5s ease infinite;
+}
+
+@keyframes borderColorChange {
+    0% {
+        border-color: rgb(165, 39, 39);
+    }
+    25% {
+        border-color: rgb(0, 174, 255);
+    }
+    50% {
+        border-color: rgb(33, 223, 33);
+    }
+    75% {
+        border-color: yellow;
+    }
+    100% {
+        border-color: rgb(214, 78, 101);
+    }
+}
+
+.review-box form {
+    width: 100%;
+}
+
+.review-box textarea {
+    resize: none;
+}
+
+.pad-btm {
+    padding-bottom: 20px;
+}
+
+
+ /* Rating Styles */
+ .text-warning {
+    color: #ffc107; /* Gold colour for the star ratings */
+}
+
+.text-secondary {
+    color: #d3d3d3; /* Light gray colour for the empty stars */
+}
+
+/* Footer */
+footer {
+    margin-top: auto;
+}
+
+/* For small devices (phones, less than 768px) */
+@media (max-width: 767px) {
+    .wrapper {
+        width: 100%; /* Make the carousel take full width */
+        height: auto; /* Adjust height dynamically */
+    }
+
+    .cards-img {
+        width: 100%; /* Make images responsive */
+        height: auto;
+        padding: 10px;
+    }
+
+    .white-box {
+        width: 90%; /* Reduce the width of the white box */
+        padding: 1rem; /* Adjust padding for smaller screens */
+    }
+
+    .search-bar {
+        width: 90%; /* Make the search bar take more space */
+    }
+
+    .card-title {
+        font-size: 1rem; /* Reduce font size for titles */
+    }
+
+    .overview {
+        -webkit-line-clamp: 2; /* Limit to 2 lines on smaller screens */
+        line-clamp: 2; /* Standard property for compatibility */
+    }
+}
+
+/* For medium devices (tablets, 768px to 991px) */
+@media (min-width: 768px) and (max-width: 991px) {
+    .wrapper {
+        width: 95%; /* Slightly reduce the width */
+    }
+
+    .white-box {
+        width: 80%; /* Adjust the white box width */
+    }
+
+    .search-bar {
+        width: 70%; /* Adjust the search bar width */
+    }
+}
+
+/* For large devices (desktops, 992px and above) */
+@media (min-width: 992px) {
+    .wrapper {
+        width: 90%; /* Default width for larger screens */
+    }
+
+    .white-box {
+        width: 60%; /* Default width for the white box */
+    }
+}
