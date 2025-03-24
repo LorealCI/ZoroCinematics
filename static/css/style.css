@@ -314,10 +314,6 @@ footer {
         width: 50px; 
     }
 
-    span .navbar-toggler-icon {
-        background-color: #fff;
-    }
-
     .wrapper {
         width: 100%; 
         overflow: visible; /* Ensure content is not clipped */
@@ -326,7 +322,7 @@ footer {
 
     .item {
         width: 150px; 
-        height: 150px; 
+        height: 250px; 
         right: max(calc(150px * 8), 100%); 
     }
 
@@ -379,10 +375,7 @@ footer {
 
 /* For medium devices (tablets, 768px to 991px) */
 @media (min-width: 768px) and (max-width: 991px) {
-    span.navbar-toggler-icon {
-        background-color: #fff;
-    }
-
+    
     .navbar-brand {
         width: 50px; 
     }
