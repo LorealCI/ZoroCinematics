@@ -13,7 +13,7 @@ from django.http import HttpResponse
 
 
 def search(request):
-    
+
     # getting the query from the search box
     query = request.GET.get('q')
     print(query)

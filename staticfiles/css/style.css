@@ -173,6 +173,17 @@ body {
    background-color: #8A9A5B;
 }
 
+.btn-custom {
+    background-color: #8A9A5B;
+    color: #000;
+}
+
+.btn-custom:hover {
+    background-color: #000;
+    color: #8A9A5B;
+    border: solid 1px #8A9A5B;
+}
+
 
 /* Movies */
 .card {
@@ -293,6 +304,26 @@ body {
     padding-bottom: 20px;
 }
 
+.btn-save {
+    background-color: #8A9A5B;
+}
+
+.btn-save:hover {
+    background-color: #000;
+    color: #8A9A5B;
+}
+
+.btn-cancel {
+    background-color: #6c757d;
+    color: #fff;
+}
+
+.btn-cancel:hover {
+    background-color: #fff;  
+    color: #000;
+    border: solid 2px #000;
+}
+
 
  /* Rating Styles */
  .text-warning {
@@ -301,6 +332,31 @@ body {
 
 .text-secondary {
     color: #d3d3d3; /* Light gray colour for the empty stars */
+}
+
+.rating-dropdown {
+    appearance: none; /* Remove default browser styling */
+    -webkit-appearance: none; /* For Safari */
+    -moz-appearance: none; /* For Firefox */
+    background-color: #fff; /* Background color of the dropdown */
+    border: 1px solid #ccc; /* Border styling */
+    border-radius: 4px; /* Rounded corners */
+    padding: 10px; /* Padding inside the dropdown */
+    padding-right: 30px; /* Add space for the arrow */
+    font-size: 1rem; /* Font size */
+    color: #000; /* Text color */
+    position: relative; /* Position for the arrow */
+}
+
+.rating-dropdown::after {
+    content: '▼'; /* Unicode for the dropdown arrow */
+    font-size: 0.8rem; /* Adjust arrow size */
+    color: #000; /* Arrow color */
+    position: absolute;
+    right: 10px; /* Position the arrow on the right */
+    top: 50%; /* Center the arrow vertically */
+    transform: translateY(-50%);
+    pointer-events: none; /* Prevent the arrow from blocking clicks */
 }
 
 /* Footer */

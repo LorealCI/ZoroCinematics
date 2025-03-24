@@ -173,6 +173,17 @@ body {
    background-color: #8A9A5B;
 }
 
+.btn-custom {
+    background-color: #8A9A5B;
+    color: #000;
+}
+
+.btn-custom:hover {
+    background-color: #000;
+    color: #8A9A5B;
+    border: solid 1px #8A9A5B;
+}
+
 
 /* Movies */
 .card {
@@ -293,6 +304,26 @@ body {
     padding-bottom: 20px;
 }
 
+.btn-save {
+    background-color: #8A9A5B;
+}
+
+.btn-save:hover {
+    background-color: #000;
+    color: #8A9A5B;
+}
+
+.btn-cancel {
+    background-color: #6c757d;
+    color: #fff;
+}
+
+.btn-cancel:hover {
+    background-color: #fff;  
+    color: #000;
+    border: solid 2px #000;
+}
+
 
  /* Rating Styles */
  .text-warning {
@@ -302,6 +333,7 @@ body {
 .text-secondary {
     color: #d3d3d3; /* Light gray colour for the empty stars */
 }
+
 
 /* Footer */
 footer {
