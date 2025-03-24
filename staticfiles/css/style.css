@@ -17,6 +17,9 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    height: auto;
+    max-width: 100%;
+    margin-left: 280px;
 }
 
 /* Movie Carousel */
@@ -35,7 +38,7 @@
   max-width: 1536px;
   margin-inline: auto;
   position: relative;
-  height: 200px;
+  height: 300px;
   margin-top: 5rem;
   overflow: hidden;
   mask-image: linear-gradient(
@@ -55,7 +58,7 @@
 
 .item {
   width: 200px;
-  height: 200px;
+  height: 300px;
   border-radius: 6px;
   position: absolute;
   right: max(calc(200px * 8), 100%);
@@ -146,6 +149,13 @@
     border: 1px solid #ccc;
 }
 
+.logo {
+    max-width: 100%;
+    height: auto; 
+    display: block; 
+    margin: 0 auto; 
+}
+
 
 .home-btn {
     padding-top: 10px;
@@ -168,6 +178,14 @@ body {
 .card {
     border: none;
     height: 100%;
+    margin: 10px;
+}
+
+.card-container {
+    display: flex;
+    flex-wrap: wrap; 
+    gap: 20px; 
+    justify-content: space-between;
 }
 
 .cards-img {
@@ -292,38 +310,86 @@ footer {
 
 /* For small devices (phones, less than 768px) */
 @media (max-width: 767px) {
-    .wrapper {
-        width: 100%; /* Make the carousel take full width */
-        height: auto; /* Adjust height dynamically */
+    .navbar-brand {
+        width: auto; /* Adjust width to fit the content */
+        margin: 0 auto; /* Center horizontally */
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 
-    .cards-img {
-        width: 100%; /* Make images responsive */
-        height: auto;
-        padding: 10px;
+
+    .navbar-collapse.show .navbar-brand {
+        margin: 0 auto;
+        display: block;
+    }
+
+    .wrapper {
+        width: 100%; 
+        overflow: visible; /* Ensure content is not clipped */
+        mask-image: none;
+    }
+
+    .item {
+        width: 150px; 
+        height: 250px; 
+        right: max(calc(150px * 8), 100%); 
+    }
+
+    @keyframes scrollRight {
+        to {
+            right: -150px; /* Adjust the end position for smaller screens */
+        }
+    }
+
+
+    .logo {
+        width: 80%; 
+        max-width: 100%;
     }
 
     .white-box {
-        width: 90%; /* Reduce the width of the white box */
-        padding: 1rem; /* Adjust padding for smaller screens */
+        width: 90%; 
+        padding: 1rem; 
     }
 
     .search-bar {
-        width: 90%; /* Make the search bar take more space */
+        width: 90%; 
+    }
+    
+    .card {
+        border: none;
+        margin: 5px;
     }
 
+
+    .cards-img {
+        width: 100%; 
+        height: auto;
+    }
+
+    .card-container {
+        gap: 10px; /* Adjust gap for smaller screens */
+    }
+
+
     .card-title {
-        font-size: 1rem; /* Reduce font size for titles */
+        font-size: 1rem; 
     }
 
     .overview {
-        -webkit-line-clamp: 2; /* Limit to 2 lines on smaller screens */
-        line-clamp: 2; /* Standard property for compatibility */
+        -webkit-line-clamp: 2; 
+        line-clamp: 2; 
     }
 }
 
 /* For medium devices (tablets, 768px to 991px) */
 @media (min-width: 768px) and (max-width: 991px) {
+    
+    .navbar-brand {
+        width: 50px; 
+    }
+
     .wrapper {
         width: 95%; /* Slightly reduce the width */
     }
@@ -335,15 +401,20 @@ footer {
     .search-bar {
         width: 70%; /* Adjust the search bar width */
     }
+
+    .cards-img {
+        width: 100%; /* Ensure images take full width of the grid cell */
+        height: auto; /* Maintain aspect ratio */
+    }
 }
 
-/* For large devices (desktops, 992px and above) */
+ For large devices (desktops, 992px and above) 
 @media (min-width: 992px) {
     .wrapper {
-        width: 90%; /* Default width for larger screens */
+        width: 90%; 
     }
 
     .white-box {
-        width: 60%; /* Default width for the white box */
+        width: 60%;
     }
 }
