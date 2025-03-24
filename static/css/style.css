@@ -311,7 +311,17 @@ footer {
 /* For small devices (phones, less than 768px) */
 @media (max-width: 767px) {
     .navbar-brand {
-        width: 50px; 
+        width: auto; /* Adjust width to fit the content */
+        margin: 0 auto; /* Center horizontally */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+
+    .navbar-collapse.show .navbar-brand {
+        margin: 0 auto;
+        display: block;
     }
 
     .wrapper {
