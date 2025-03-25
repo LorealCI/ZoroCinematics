@@ -24,7 +24,8 @@ Home
     <p class="text-black text-center">
         Explore the latest trending movies and find your next favorite film!
     </p>
-    <form action="/search/" method="get" class="search-bar">
+    <form action="/search/" method="get" class="search-bar" id="searchForm">
+        {% csrf_token %}
         <div class="col-auto">
             <input type="text" class="form-control" id="search-input" placeholder="Search A Movie" name="q" list="suggestions">
         </div>
@@ -36,4 +37,4 @@ Home
 </div>
 
 {% endblock %}
-{% block copyright %}Copyright 2025 Loreal Francis-Boyles{% endblock %}
+{% block copyright %}© 2025 ZoroCinematics. All rights reserved.{% endblock %}
